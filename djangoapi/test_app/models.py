@@ -26,19 +26,46 @@ class TestModel(models.Model):
     phone = models.PositiveIntegerField()
     is_live = models.BooleanField()
     amount = models.FloatField()
+    #showing how we can manipulate data before saving
+    #In this instance we set a field as not editable so admin cannot have access to change.
+    #then we override the save method
+    nickname = models.CharField(max_length=255, editable=False, default="null")
+    region = models.ForeignKey("RegionModel", null=True, on_delete=models.CASCADE, related_name="test_constant")
     created_at =models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         #default display
-        return f"{self.name} - {self.email} - {self.created_at.strftime(' %H: %M: %S')}"
+        return f"{self.nickname}"
 
+    #Handles changes we make to the default flow of our model
     class Meta:
         #order based on created_at
         #ascending
         ordering = ("created_at",)
         # descending
       # ordering = ("-created_at",)
+     # Changing the default name of model in display
+        verbose_name_plural = "Test Model"
+
+    #Overriding the save method
+    def save(self, *args, **kwargs):
+        self.nickname=f"{self.name} - {self.phone}"
+        #superclass
+        super().save(*args,**kwargs)
+
+class RegionModel(models.Model):
+    Region_ID = models.CharField(max_length=5, primary_key=True)
+    Region_Name = models.CharField(max_length=100)
+
+    def __str__(self):
+        #default display
+        return f"{self.Region_Name}"
+
+    class Meta:
+        # Changing the default name of model in display
+        verbose_name_plural = "Region Model"
+
 
 
 
