@@ -2,7 +2,7 @@ from django.db import models
 #from django.utils import timezone
 
 # Create your models here.
-# Django Models
+# Django Models =>  medium between app and database
 #models.CharField(max_length=255)
 #models.TextField()
 #models.IntegerField()
