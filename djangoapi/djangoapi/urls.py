@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 #reference the view in your main urls
-from test_app.views import simple
+from test_app.views import Simple
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path and view prameters
-    path('simple/test/', simple.as_view()),
+    path('simple/test/', Simple.as_view()),
 ]
