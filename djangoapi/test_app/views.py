@@ -3,6 +3,8 @@ from django.shortcuts import render
 #import the types of responses u woul work with
 from django.http import JsonResponse, response
 from rest_framework.views import APIView
+#Implement Generics in Views to reduce number of code lines
+from rest_framework import generics
 #import Model
 from .models import TestModel, RegionModel
 from .serializers import SimpleSerializer
@@ -11,7 +13,7 @@ from django.forms.models import model_to_dict
 # Create your views here.
 #ClassBased Views
 
-#Create Class
+#Create APIVIEW Class
 
 class Simple(APIView):
 
@@ -53,9 +55,15 @@ class Simple(APIView):
         serializer.save()
         return JsonResponse({"data": serializer.data})
 
+#Create classes with Generics
+#ListCreateAPIView gives the abstraction of creating and listing data
+class SimpleGenerics(generics.ListCreateAPIView):
+    queryset = RegionModel.objects.all()
+    serializer_class = SimpleSerializer
 
-
-
-
-
-
+#ListCreateAPIView gives the abstraction of creating and listing data
+class SimpleGenericsUpdate(generics.UpdateAPIView):
+    queryset = RegionModel.objects.all()
+    serializer_class = SimpleSerializer
+    #specify the field to filter with
+    lookup_field = "Region_ID"

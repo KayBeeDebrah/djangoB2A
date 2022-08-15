@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 #reference the view in your main urls
-from test_app.views import Simple
+from test_app.views import Simple, SimpleGenerics, SimpleGenericsUpdate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path and view prameters
     path('simple/test/', Simple.as_view()),
     path('simple/test/<str:Region_ID>', Simple.as_view()),
+    path('simple/generics/', SimpleGenerics.as_view()),
+    path('simple/generics/<str:Region_ID>', SimpleGenericsUpdate.as_view()),
 ]
