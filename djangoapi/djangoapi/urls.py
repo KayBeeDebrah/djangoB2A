@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 #reference the view in your main urls
-from test_app.views import SimpleViewset
+from test_app.views import SimpleViewset, ContactViewSet
 
 #Create an instance of RDefaultRouter and assign urls
 
 router = DefaultRouter()
 router.register("simple-viewset", SimpleViewset)
+router.register("contact-viewset", ContactViewSet)
 
 
 urlpatterns = [

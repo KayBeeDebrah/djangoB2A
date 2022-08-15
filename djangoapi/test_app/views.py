@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework import generics, viewsets
 #import Model
 from .models import TestModel, RegionModel
-from .serializers import SimpleSerializer
+from .serializers import SimpleSerializer, ContactSerializer
 from django.forms.models import model_to_dict
 
 # Create your views here.
@@ -21,4 +21,8 @@ from django.forms.models import model_to_dict
 class SimpleViewset(viewsets.ModelViewSet):
     queryset = RegionModel.objects.all()
     serializer_class = SimpleSerializer
+
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = TestModel.objects.all()
+    serializer_class = ContactSerializer
 
