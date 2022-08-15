@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 #reference the view in your main urls
 from test_app.views import SimpleViewset, ContactViewSet
+from django.conf import settings
 
 #Create an instance of RDefaultRouter and assign urls
 
@@ -32,3 +33,10 @@ urlpatterns = [
     path("", include(router.urls))
 
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns
+
