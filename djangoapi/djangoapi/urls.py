@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path and view prameters
     path('simple/test/', Simple.as_view()),
+    path('simple/test/<str:Region_ID>', Simple.as_view()),
 ]
