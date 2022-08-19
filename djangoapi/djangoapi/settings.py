@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,15 +94,15 @@ DATABASES = {
     #}
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'testdb',
-        'USER': 'admin',
-        'PASSWORD': 'admin321',
-        'HOST': '127.0.0.1',
-        'PORT': '5000',
+        'NAME': config("NAME"),
+        'USER': config("USER"),
+        'PASSWORD': config("PASSWORD"),
+        'HOST': config("HOST"),
+        'PORT': config("PORT"),
     }
 }
 
-
+#if you want to delete a table from db clear the model from the models file and run migrarions and migrate
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
