@@ -17,20 +17,20 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 #reference the view in your main urls
-from contact_app.views import SimpleViewset, ContactViewSet
+
 from django.conf import settings
 
 #Create an instance of RDefaultRouter and assign urls
 
-router = DefaultRouter()
-router.register("simple-viewset", SimpleViewset)
-router.register("contact-viewset", ContactViewSet)
+#router = DefaultRouter()
+#router.register("simple-viewset", SimpleViewset)
+#router.register("contact-viewset", ContactViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path and view prameters
-    path("", include(router.urls))
+
 
 ]
 

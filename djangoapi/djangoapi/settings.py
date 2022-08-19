@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'test_app',
     'contact_app',
     'rest_framework',
-    'debug_toolbar'
+    'debug_toolbar',
+    'django_seed'
 
 
 
